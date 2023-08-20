@@ -1,0 +1,9 @@
+extend type Mutation{
+    # login(email: String!, password: String!): Doctor @find
+    loginDoctor(email: String!, password: String!, device_name: String!): String!
+
+    loginStaff(email: String!, password: String!, device_name: String!): String!
+
+    loginPatient(email: String!, password: String!, device_name: String!): String!
+
+}

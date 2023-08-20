@@ -1,0 +1,60 @@
+extend type Query {
+
+    staff( id: ID @eq ): Staff @find
+    staffs: [Staff!]! @all
+
+}
+
+
+extend type Mutation {
+
+    createStaff(
+        name: String!,
+        email: String! @rules(apply: ["email", "unique:staff"]),
+        password: String! @rules(apply: ["min:8"]),
+        doctor_id: ID!
+    ): Staff! @create
+
+    updateStaff(
+        id: ID!,
+        name: String,
+        email: String @rules(apply: ["email", "unique:staff"]),
+        password: String @rules(apply: ["min:8"]),
+        doctor_id: ID!
+    ): Staff @update
+
+
+    deleteStaff(id: ID! @whereKey): Staff @delete
+
+    upsertStaff(id: ID!,
+        name: String!,
+        email: String! @rules(apply: ["email", "unique:Staff"]),
+        password: String! @rules(apply: ["min:8"]),
+        doctor_id: ID!
+    ): Staff @upsert
+
+
+}
+
+
+type Staff {
+    "Unique primary key."
+    id: ID!
+
+    "Non-unique name."
+    name: String!
+
+    "Unique email address."
+    email: String!
+
+    "When the email was verified."
+    email_verified_at: DateTime
+
+    "When the account was created."
+    created_at: DateTime!
+
+    "When the account was last updated."
+    updated_at: DateTime!
+
+    doctor: Doctor! @belongsTo
+}

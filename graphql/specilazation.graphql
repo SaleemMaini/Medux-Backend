@@ -1,0 +1,20 @@
+extend type Query {
+    specilazations: [Specilazation!]! @all
+}
+
+
+extend type Mutation {
+
+    createSpecilazation(
+        name: String!
+    ): Specilazation! @create
+
+    deleteSpecilazation(id: ID! @whereKey): Specilazation @delete
+
+
+}
+
+
+type Specilazation {
+    name: String!
+}

@@ -1,0 +1,63 @@
+extend type Query {
+
+    doctor(id: ID @eq): Doctor @find
+
+    doctors: [Doctor!]! @all
+
+}
+
+
+extend type Mutation {
+
+    createDoctor(
+        name: String!,
+        email: String! @rules(apply: ["email", "unique:doctors"]),
+        password: String! @rules(apply: ["min:8"]),
+        specilazation_id: ID!
+    ): Doctor! @create
+
+    updateDoctor(
+        id: ID!,
+        name: String,
+        email: String @rules(apply: ["email", "unique:doctors"]),
+        password: String @rules(apply: ["min:8"]),
+        specilazation_id: ID!
+    ): Doctor @update
+
+    deleteDoctor(id: ID! @whereKey): Doctor @delete
+
+    upsertDoctor(id: ID!,
+        name: String!,
+        email: String! @rules(apply: ["email", "unique:doctors"]),
+        password: String! @rules(apply: ["min:8"]),
+        specilazation_id: ID!
+    ): Doctor @upsert
+
+
+}
+
+
+type Doctor {
+    "Unique primary key."
+    id: ID!
+
+    "Non-unique name."
+    name: String!
+
+    "Unique email address."
+    email: String!
+
+    specilazation_id: ID
+
+    staffs: [Staff]! @hasMany
+    patients: [Doctors_has_patient]! @hasMany
+
+    "When the email was verified."
+    email_verified_at: DateTime
+
+    "When the account was created."
+    created_at: DateTime!
+
+    "When the account was last updated."
+    updated_at: DateTime!
+}

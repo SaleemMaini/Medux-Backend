@@ -1,0 +1,25 @@
+extend type Query {
+
+    doctor_Ps: [Doctors_has_patient!]! @all
+    doctor_P(id: ID @eq): Doctors_has_patient @find
+
+
+
+}
+
+type Doctors_has_patient {
+    "Unique primary key."
+    doctor: Doctor! @belongsTo
+
+    patient: Patient! @belongsTo
+
+
+    "When the account was created."
+    created_at: DateTime!
+
+    "When the account was last updated."
+    updated_at: DateTime!
+}
+
+
+
