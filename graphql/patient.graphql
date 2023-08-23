@@ -47,6 +47,10 @@ type Patient {
 
     doctors: [Doctors_has_patient]! @hasMany
 
+    appointments: [Appointment]! @hasMany
+
+
+
     "When the email was verified."
     email_verified_at: DateTime
 

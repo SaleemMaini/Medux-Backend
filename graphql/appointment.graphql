@@ -1,0 +1,25 @@
+extend type Query {
+    appointments: [Appointment!]! @all
+    appointment( id: ID @eq ): Appointment @find
+}
+
+
+extend type Mutation {
+
+    createAppointment(
+        name: String!
+    ): Appointment! @create
+
+    deleteAppointment(id: ID! @whereKey): Appointment @delete
+
+
+}
+
+
+type Appointment {
+    id: ID!
+    date: DateTime!,
+    resonAppointment: String!,
+    notes : String!
+    patient: Patient! @belongsTo
+}
