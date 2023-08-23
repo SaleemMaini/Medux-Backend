@@ -2,9 +2,14 @@ extend type Query {
 
     doctor_Ps: [Doctors_has_patient!]! @all
     doctor_P(id: ID @eq): Doctors_has_patient @find
+}
 
+extend type Mutation {
 
-
+    createPatientforDoctor(
+        doctor_id: ID!,
+        patient_id: ID!
+    ): Doctors_has_patient! @create
 }
 
 type Doctors_has_patient {

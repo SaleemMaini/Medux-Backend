@@ -7,3 +7,10 @@ extend type Mutation{
     loginPatient(email: String!, password: String!, device_name: String!): String!
 
 }
+
+extend type Query {
+    meD: Doctor! @guard @auth
+    meS: Staff! @guard @auth
+    meP: Patient! @guard @auth
+
+}
