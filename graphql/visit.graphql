@@ -1,0 +1,27 @@
+extend type Query {
+    visits: [Visit!]! @all
+    visit( id: ID @eq ): Visit @find
+}
+
+
+extend type Mutation {
+
+    createVisit(
+        name: String!
+    ): Visit! @create
+
+    deleteVisit(id: ID! @whereKey): Visit @delete
+
+
+}
+
+
+type Visit {
+    id: ID!
+    prescription: String!
+    dateAndTime: String!
+    notes : String!
+    patients: Patient! @belongsTo
+    payment: [Payment]! @hasMany
+    appointment: Appointment! @belongsTo
+}

@@ -35,4 +35,13 @@ scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date
 
 #import appointment.graphql
 
+#import payment.graphql
+
+#import visit.graphql
+
+
+
+
+
+
 

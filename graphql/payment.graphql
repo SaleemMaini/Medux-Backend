@@ -1,0 +1,25 @@
+extend type Query {
+    payments: [Payment!]! @all
+    payment( id: ID @eq ): Payment @find
+}
+
+
+extend type Mutation {
+
+    createPayment(
+        name: String!
+    ): Payment! @create
+
+    deletePayment(id: ID! @whereKey): Payment @delete
+
+
+}
+
+
+type Payment {
+    id: ID!
+    type: String!
+    status: String!
+    notes : String!
+    visit: Visit! @belongsTo
+}

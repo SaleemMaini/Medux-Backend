@@ -18,8 +18,9 @@ extend type Mutation {
 
 type Appointment {
     id: ID!
-    date: DateTime!,
-    resonAppointment: String!,
+    date: DateTime!
+    resonAppointment: String!
     notes : String!
     patient: Patient! @belongsTo
+    visit: Visit! @belongsTo
 }

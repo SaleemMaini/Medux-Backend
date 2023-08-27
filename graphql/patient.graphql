@@ -49,6 +49,8 @@ type Patient {
 
     appointments: [Appointment]! @hasMany
 
+    visits: [Visit]! @hasMany
+
 
 
     "When the email was verified."

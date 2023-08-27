@@ -6,21 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Appointment extends Model
+class Payment extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'date',
-        'resonAppointment',
-        'patient_id',
-        'visit_id',
-        'notes'
+        'type',
+        'status',
+        'notes',
+        'visit_id'
     ];
 
-    public function patient(): BelongsTo
-    {
-        return $this->belongsTo(Patient::class, 'patient_id');
-    }
     public function visit(): BelongsTo
     {
         return $this->belongsTo(Visit::class, 'visit_id');
