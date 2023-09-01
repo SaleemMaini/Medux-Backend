@@ -21,7 +21,7 @@ class VisitFactory extends Factory
             'prescription' => $this->faker->text(),
             'dateAndTime' => $this->faker->dateTime(),
             'notes' => $this->faker->text(),
-            'patients_id' => function(){
+            'patient_id' => function(){
                 return Patient::factory()->create()->id;
             }
 

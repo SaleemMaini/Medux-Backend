@@ -23,5 +23,5 @@ type Visit {
     notes : String!
     patients: Patient! @belongsTo
     payment: [Payment]! @hasMany
-    appointment: Appointment! @belongsTo
+    # appointment: Appointment! @belongsTo # The access to appointment is error from here, becouse appointment accurs before the visit does
 }

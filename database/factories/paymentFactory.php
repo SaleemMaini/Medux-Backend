@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Visit;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,11 @@ class paymentFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'type' => $this->faker->text(),
+            'notes' => $this->faker->text(),
+            'visit_id' => function(){
+                return Visit::factory()->create()->id;
+            }
         ];
     }
 }
