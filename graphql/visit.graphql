@@ -19,7 +19,7 @@ extend type Mutation {
 type Visit {
     id: ID!
     prescription: String!
-    dateAndTime: String!
+    dateAndTime: DateTime!
     notes : String!
     patients: Patient! @belongsTo
     payment: [Payment]! @hasMany

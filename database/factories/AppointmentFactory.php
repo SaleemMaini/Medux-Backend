@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\DoctorAvT;
 use App\Models\Patient;
 use App\Models\Visit;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -27,6 +28,9 @@ class AppointmentFactory extends Factory
             'visit_id' => function(){
                 return Visit::factory()->create()->id;
             },
+            // 'doctorAvT_id' => function(){
+            //     return DoctorAvT::factory()->create()->id;
+            // },
             'notes' => $this->faker->text()
         ];
     }

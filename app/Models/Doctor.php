@@ -60,4 +60,9 @@ class Doctor extends Authenticatable
         return $this->hasMany(Doctors_has_patient::class);
     }
 
+    public function doctoravts(): HasMany
+    {
+        return $this->hasMany(DoctorAvT::class);
+    }
+
 }

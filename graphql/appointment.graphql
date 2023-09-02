@@ -23,4 +23,5 @@ type Appointment {
     notes : String!
     patient: Patient! @belongsTo
     visit: Visit! @belongsTo
+    # doctorAvT: DoctorAvT! @belongsTo
 }

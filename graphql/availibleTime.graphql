@@ -1,0 +1,33 @@
+extend type Query {
+    availibleTimes: [AvailibleTime!]! @all
+    availibleTime( id: ID @eq ): AvailibleTime @find
+}
+
+
+extend type Mutation {
+
+    createAvailibleTime(
+        availibleTime: DateTime!
+    ): AvailibleTime! @create
+
+    deleteAvailibleTime(id: ID! @whereKey): AvailibleTime @delete
+
+
+}
+
+
+type AvailibleTime {
+    id: ID!
+    availibleTime: DateTime!
+    doctoravts: [DoctorAvT]! @hasMany
+
+
+    # patients: Patient! @belongsTo
+    # payment: [Payment]! @hasMany
+
+    "When the account was created."
+    created_at: DateTime!
+
+    "When the account was last updated."
+    updated_at: DateTime!
+}

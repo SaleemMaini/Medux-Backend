@@ -4,6 +4,8 @@ extend type Query {
 
     doctors: [Doctor!]! @all
 
+    doctorAv( id: ID @eq ): DoctorAvT @find
+
 }
 
 
@@ -47,10 +49,11 @@ type Doctor {
     "Unique email address."
     email: String!
 
-    specilazation_id: ID
+    specilazation: Specilazation! @belongsTo
 
     staffs: [Staff]! @hasMany
     patients: [Doctors_has_patient]! @hasMany
+    DoctorAvTs: [DoctorAvT]! @hasMany
 
     "When the email was verified."
     email_verified_at: DateTime
