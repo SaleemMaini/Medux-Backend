@@ -21,7 +21,7 @@ class AppointmentFactory extends Factory
     {
         return [
             'date' => $this->faker->dateTime(),
-            'resonAppointment' => $this->faker->sentence(),
+            'reasonAppointment' => $this->faker->sentence(),
             'patient_id' => function(){
                 return Patient::factory()->create()->id;
             },
