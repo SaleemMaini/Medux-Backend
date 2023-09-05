@@ -1,3 +1,7 @@
+enum Gender {
+    Male
+    Female
+}
 extend type Query {
 
     doctor(id: ID @eq): Doctor @find
@@ -15,7 +19,15 @@ extend type Mutation {
         name: String!,
         email: String! @rules(apply: ["email", "unique:doctors"]),
         password: String! @rules(apply: ["min:8"]),
-        specilazation_id: ID!
+        specilazation_id: ID!,
+        gender: Gender!,
+        phone: ID! @rules(apply: ["min:10", "max:15"]),
+        address: String!,
+        fees: Float!,
+        workingHours: ID! @rules(apply: ["max:2"]),
+        averageVisitTime: ID! @rules(apply: ["max:2"]),
+        pointStartWorkTime: DateTime!,
+        pointEndWorkTime: DateTime!
     ): Doctor! @create
 
     updateDoctor(
@@ -23,7 +35,16 @@ extend type Mutation {
         name: String,
         email: String @rules(apply: ["email", "unique:doctors"]),
         password: String @rules(apply: ["min:8"]),
-        specilazation_id: ID!
+        specilazation_id: ID!,
+        gender: Gender!,
+        phone: ID @rules(apply: ["min:10", "max:15"]),
+        address: String,
+        fees: Float,
+        workingHours: ID @rules(apply: ["max:2"]),
+        averageVisitTime: ID @rules(apply: ["max:2"]),
+        pointStartWorkTime: DateTime,
+        pointEndWorkTime: DateTime
+
     ): Doctor @update
 
     deleteDoctor(id: ID! @whereKey): Doctor @delete
@@ -32,7 +53,15 @@ extend type Mutation {
         name: String!,
         email: String! @rules(apply: ["email", "unique:doctors"]),
         password: String! @rules(apply: ["min:8"]),
-        specilazation_id: ID!
+        specilazation_id: ID!,
+        gender: Gender!,
+        phone: ID! @rules(apply: ["min:10", "max:15"]),
+        address: String!,
+        fees: Float!,
+        workingHours: ID! @rules(apply: ["max:2"]),
+        averageVisitTime: ID! @rules(apply: ["max:2"]),
+        pointStartWorkTime: DateTime!,
+        pointEndWorkTime: DateTime!
     ): Doctor @upsert
 
 
@@ -50,6 +79,8 @@ type Doctor {
     email: String!
 
     specilazation: Specilazation! @belongsTo
+
+    gender: String!
 
     staffs: [Staff]! @hasMany
     patients: [Doctors_has_patient]! @hasMany
