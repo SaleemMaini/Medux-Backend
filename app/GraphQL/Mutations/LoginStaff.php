@@ -34,7 +34,7 @@ final class LoginStaff
         ]);
     }
     else{
-        return " Token: ".$staff->createToken($args['device_name'])->plainTextToken;
+        return $staff->createToken($args['device_name'])->plainTextToken;
     }
     }
 }

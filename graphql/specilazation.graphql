@@ -17,5 +17,6 @@ extend type Mutation {
 
 
 type Specilazation {
+    id: ID!
     name: String!
 }
