@@ -32,7 +32,7 @@ final class LoginDoctor
         ]);
     }
     else{
-        return " Token: ".$doctor->createToken($args['device_name'])->plainTextToken;
+        return $doctor->createToken($args['device_name'])->plainTextToken;
     }
     }
 }
