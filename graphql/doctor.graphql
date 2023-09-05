@@ -20,7 +20,7 @@ extend type Mutation {
         email: String! @rules(apply: ["email", "unique:doctors"]),
         password: String! @rules(apply: ["min:8"]),
         specilazation_id: ID!,
-        gender: Gender!,
+        gender: String!,
         phone: ID! @rules(apply: ["min:10", "max:15"]),
         address: String!,
         fees: Float!,
