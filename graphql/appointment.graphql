@@ -7,7 +7,11 @@ extend type Query {
 extend type Mutation {
 
     createAppointment(
-        name: String!
+        date: DateTime!,
+        reasonAppointment: String!,
+        notes: String!,
+        patient_id: ID!,
+        visit_id:ID!,
     ): Appointment! @create
 
     deleteAppointment(id: ID! @whereKey): Appointment @delete
@@ -19,7 +23,7 @@ extend type Mutation {
 type Appointment {
     id: ID!
     date: DateTime!
-    resonAppointment: String!
+    reasonAppointment: String!
     notes : String!
     patient: Patient! @belongsTo
     visit: Visit! @belongsTo
