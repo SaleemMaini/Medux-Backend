@@ -26,7 +26,7 @@ class DoctorFactory extends Factory
             'remember_token' => Str::random(10),
             'specilazation_id' => function(){
                 return Specilazation::factory()->create()->id;
-            }
+            },
         ];
     }
 
