@@ -1,15 +1,10 @@
-enum Gender {
-    Male
-    Female
-}
 extend type Query {
 
     doctor(id: ID @eq): Doctor @find
 
     doctors: [Doctor!]! @all
 
-    doctorAv( id: ID @eq ): DoctorAvT @find
-
+    doctorWH:
 }
 
 
@@ -19,15 +14,17 @@ extend type Mutation {
         name: String!,
         email: String! @rules(apply: ["email", "unique:doctors"]),
         password: String! @rules(apply: ["min:8"]),
-        specilazation_id: ID!,
-        gender: String!,
-        phone: ID! @rules(apply: ["min:10", "max:15"]),
-        address: String!,
+        specialization_id: ID!,
+        phone: ID! @rules(apply: ["min:10","max:15"]),
+        gender: String!
+        city_id: ID!,
+        avatar: String!,
+        summary: String!,
         fees: Float!,
-        workingHours: ID! @rules(apply: ["max:2"]),
-        averageVisitTime: ID! @rules(apply: ["max:2"]),
-        pointStartWorkTime: DateTime!,
-        pointEndWorkTime: DateTime!
+        workingHours: String!,
+        averageVisitTime: ID!,
+        pointStartWorkTime: DateTime,
+        pointEndWorkTime: DateTime
     ): Doctor! @create
 
     updateDoctor(
@@ -35,16 +32,17 @@ extend type Mutation {
         name: String,
         email: String @rules(apply: ["email", "unique:doctors"]),
         password: String @rules(apply: ["min:8"]),
-        specilazation_id: ID!,
-        gender: Gender!,
-        phone: ID @rules(apply: ["min:10", "max:15"]),
-        address: String,
+        specialization_id: ID!,
+        phone: ID @rules(apply: ["min:10","max:15"]),
+        gender: String
+        city_id: ID,
+        avatar: String,
+        summary: String,
         fees: Float,
-        workingHours: ID @rules(apply: ["max:2"]),
-        averageVisitTime: ID @rules(apply: ["max:2"]),
+        workingHours: String,
+        averageVisitTime: ID,
         pointStartWorkTime: DateTime,
         pointEndWorkTime: DateTime
-
     ): Doctor @update
 
     deleteDoctor(id: ID! @whereKey): Doctor @delete
@@ -53,15 +51,17 @@ extend type Mutation {
         name: String!,
         email: String! @rules(apply: ["email", "unique:doctors"]),
         password: String! @rules(apply: ["min:8"]),
-        specilazation_id: ID!,
-        gender: Gender!,
-        phone: ID! @rules(apply: ["min:10", "max:15"]),
-        address: String!,
-        fees: Float!,
-        workingHours: ID! @rules(apply: ["max:2"]),
-        averageVisitTime: ID! @rules(apply: ["max:2"]),
-        pointStartWorkTime: DateTime!,
-        pointEndWorkTime: DateTime!
+        specialization_id: ID!,
+        phone: ID @rules(apply: ["min:10","max:15"]),
+        gender: String
+        city_id: ID,
+        avatar: String,
+        summary: String,
+        fees: Float,
+        workingHours: String,
+        averageVisitTime: ID,
+        pointStartWorkTime: DateTime,
+        pointEndWorkTime: DateTime
     ): Doctor @upsert
 
 
@@ -78,16 +78,18 @@ type Doctor {
     "Unique email address."
     email: String!
 
-    specilazation: Specilazation! @belongsTo
+    specialization: Specialization! @belongsTo
 
-    gender: String!
+    city: City! @belongsTo
+
 
     staffs: [Staff]! @hasMany
     patients: [Doctors_has_patient]! @hasMany
-    DoctorAvTs: [DoctorAvT]! @hasMany
 
-    "When the email was verified."
-    email_verified_at: DateTime
+
+    appointments: [Appointment]! @hasMany
+
+    workingHours: String!
 
     "When the account was created."
     created_at: DateTime!

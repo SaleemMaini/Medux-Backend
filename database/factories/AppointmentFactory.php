@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Doctor;
 use App\Models\DoctorAvT;
 use App\Models\Patient;
 use App\Models\Visit;
@@ -21,17 +22,15 @@ class AppointmentFactory extends Factory
     {
         return [
             'date' => $this->faker->dateTime(),
-            'reasonAppointment' => $this->faker->sentence(),
+            'doctor_id' => function(){
+                return Doctor::factory()->create()->id;
+            },
             'patient_id' => function(){
                 return Patient::factory()->create()->id;
-            },
-            'visit_id' => function(){
-                return Visit::factory()->create()->id;
-            },
+            }
             // 'doctorAvT_id' => function(){
             //     return DoctorAvT::factory()->create()->id;
             // },
-            'notes' => $this->faker->text()
         ];
     }
 }

@@ -7,8 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 
-
-class Specilazation extends Model
+class City extends Model
 {
     use HasFactory, Notifiable;
     protected $fillable = [
@@ -21,4 +20,3 @@ class Specilazation extends Model
         return $this->hasMany(Doctor::class);
     }
 }
-

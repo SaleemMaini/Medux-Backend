@@ -1,0 +1,22 @@
+extend type Query {
+    specialization(id: ID @eq): Specialization @find
+    specializations: [Specialization!]! @all
+}
+
+
+extend type Mutation {
+
+    createSpecialization(
+        name: String!
+    ): Specialization! @create
+
+    deleteSpecialization(id: ID! @whereKey): Specialization @delete
+
+
+}
+
+
+type Specialization {
+    id: ID!
+    name: String!
+}

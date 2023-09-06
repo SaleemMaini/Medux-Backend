@@ -9,12 +9,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class AvailibleTime extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'availibleTime',
-    ];
+    // protected $fillable = [
+    //     'availibleTime',
+    // ];
 
-    public function doctoravts(): HasMany
-    {
-        return $this->hasMany(DoctorAvT::class);
-    }
+    // public function doctoravts(): HasMany
+    // {
+    //     return $this->hasMany(DoctorAvT::class);
+    // }
 }

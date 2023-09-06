@@ -10,7 +10,8 @@ extend type Mutation {
         prescription: String!,
         dateAndTime: DateTime!,
         notes: String!,
-        patient_id: ID!
+        patient_id: ID!,
+        appointment_id: ID!
     ): Visit! @create
 
     deleteVisit(id: ID! @whereKey): Visit @delete
@@ -26,5 +27,5 @@ type Visit {
     notes : String!
     patient: Patient! @belongsTo
     payment: [Payment]! @hasMany
-    # appointment: Appointment! @belongsTo # The access to appointment is error from here, becouse appointment accurs before the visit does
+    appointment: Appointment! @belongsTo
 }

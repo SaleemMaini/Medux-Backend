@@ -1,0 +1,23 @@
+extend type Query {
+    city(id: ID @eq): City @find
+    cities: [City!]! @all
+}
+
+
+extend type Mutation {
+
+    createCity(
+        name: String!
+    ): City! @create
+
+    deleteCity(id: ID! @whereKey): City @delete
+
+
+}
+
+
+type City {
+    id: ID!
+    name: String!
+    doctors: [Doctor]! @hasMany
+}
