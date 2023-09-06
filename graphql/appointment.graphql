@@ -9,7 +9,6 @@ extend type Mutation {
 
     createAppointment(
         date: DateTime!,
-        type: String!,
         doctor_id: ID!,
         patient_id: ID!,
     ): Appointment! @create
