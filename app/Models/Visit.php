@@ -15,7 +15,7 @@ class Visit extends Model
         'dateAndTime',
         'notes',
         'patient_id',
-        // 'appointment_id'
+        'appointment_id'
     ];
 
 
@@ -26,10 +26,10 @@ class Visit extends Model
     }
 
 
-    // public function appointment(): BelongsTo
-    // {
-    //     return $this->belongsTo(Appointment::class, 'appointment_id');
-    // }
+    public function appointment(): BelongsTo
+    {
+        return $this->belongsTo(Appointment::class, 'appointment_id');
+    }
 
     public function payment(): HasMany
     {
