@@ -22,7 +22,7 @@ final class LoginPatient
             ]);
         }
         else{
-            return " Token: ".$patient->createToken($args['device_name'])->plainTextToken;
+            return $patient->createToken($args['device_name'])->plainTextToken;
         }
     }
 }
