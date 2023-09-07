@@ -39,7 +39,9 @@ scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date
 
 #import visit.graphql
 
-#import City.graphql
+#import city.graphql
+
+#import district.graphql
 
 
 

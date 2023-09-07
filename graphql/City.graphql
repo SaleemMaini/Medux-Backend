@@ -20,4 +20,5 @@ type City {
     id: ID!
     name: String!
     doctors: [Doctor]! @hasMany
+    districts: [District]! @hasMany
 }
