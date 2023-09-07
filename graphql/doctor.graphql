@@ -76,6 +76,8 @@ type Doctor {
 
     appointments: [Appointment]! @hasMany
 
+    WorkingHours: WorkingHour! @belongsTo
+
 
     "When the account was created."
     created_at: DateTime!

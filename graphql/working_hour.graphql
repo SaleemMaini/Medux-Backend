@@ -1,0 +1,24 @@
+extend type Query {
+    WorkingHour(id: ID @eq): WorkingHour @find
+    WorkingHours: [WorkingHour!]! @all
+}
+
+
+extend type Mutation {
+
+    createWorkingHour(
+        workingHours: String!
+        averageVisitTime: ID!
+    ): WorkingHour! @create
+
+    deleteWorkingHour(id: ID! @whereKey): WorkingHour @delete
+
+
+}
+
+
+type WorkingHour {
+    id: ID!
+    workingHours: String!
+    averageVisitTime: ID!
+}
