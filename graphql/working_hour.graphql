@@ -1,3 +1,25 @@
+input  WH{
+    day: String!
+    active: String!
+    from: String!
+    to: String!
+}
+input WSI{
+    day1: [WH]!
+    day2: [WH]!
+    day3: [WH]!
+    day4: [WH]!
+    day5: [WH]!
+    day6: [WH]!
+    day7: [WH]!
+}
+type JSON{
+    day: String!
+    active: String!
+    from: String!
+    to: String!
+}
+
 extend type Query {
     WorkingHour(id: ID @eq): WorkingHour @find
     WorkingHours: [WorkingHour!]! @all
@@ -7,9 +29,15 @@ extend type Query {
 extend type Mutation {
 
     createWorkingHour(
-        workingHours: String!
+        workingHours: [WSI]!
         averageVisitTime: ID!
     ): WorkingHour! @create
+
+    updateWorkingHour(
+        id: ID!,
+        workingHours: [WH]!
+        averageVisitTime: ID!
+    ): WorkingHour @update
 
     deleteWorkingHour(id: ID! @whereKey): WorkingHour @delete
 
@@ -17,8 +45,9 @@ extend type Mutation {
 }
 
 
+
 type WorkingHour {
     id: ID!
-    workingHours: String!
+    workingHours: [JSON]!
     averageVisitTime: ID!
 }

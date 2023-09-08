@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class WorkingHourController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +25,15 @@ class WorkingHourController extends Controller
      */
     public function create()
     {
-        //
+        $WH = WorkingHour::find(1);
+
+        $workingHours = $WH->workingHours;
+
+        $options['key'] = 'value';
+
+        $WH->workingHours = $workingHours;
+
+        $WH->save();
     }
 
     /**
@@ -35,7 +44,7 @@ class WorkingHourController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
