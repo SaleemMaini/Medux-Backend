@@ -26,6 +26,7 @@ class Doctor extends Authenticatable
         'specialization_id',
         'phone',
         'city_id',
+        'district_id',
         'working_Hours_id'
     ];
 
@@ -69,6 +70,10 @@ class Doctor extends Authenticatable
     public function city(): BelongsTo
     {
         return $this->belongsTo(City::class, 'city_id');
+    }
+    public function district(): BelongsTo
+    {
+        return $this->belongsTo(District::class, 'district_id');
     }
 
     public function workinghours(): BelongsTo

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\City;
+use App\Models\District;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\Specialization;
@@ -31,6 +32,9 @@ class DoctorFactory extends Factory
             },
             'city_id' => function(){
                 return City::factory()->create()->id;
+            },
+            'district_id' => function(){
+                return District::factory()->create()->id;
             },
             'working_Hours_id' => function(){
                 return WorkingHour::factory()->create()->id;
