@@ -18,7 +18,8 @@ class paymentFactory extends Factory
     public function definition()
     {
         return [
-            'type' => $this->faker->text(),
+            'amount' => $this->faker->randomNumber(2, true),
+            'status' => $this->faker->text(),
             'notes' => $this->faker->text(),
             'visit_id' => function(){
                 return Visit::factory()->create()->id;
