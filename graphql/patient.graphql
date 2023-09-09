@@ -14,7 +14,7 @@ extend type Mutation {
         email: String! @rules(apply: ["email", "unique:patients"]),
         password: String! @rules(apply: ["min:8"]),
         age: ID! @rules(apply: ["min:2"]),
-        phone: ID! @rules(apply: ["min:10","max:15"]),
+        phone: ID! @rules(apply: ["min:10","max:20"]),
         gender: String!,
     ): Patient! @create
 
@@ -24,7 +24,7 @@ extend type Mutation {
         email: String @rules(apply: ["email", "unique:patients"]),
         password: String @rules(apply: ["min:8"]),
         age: ID! @rules(apply: ["min:2"]),
-        phone: ID! @rules(apply: ["min:10","max:15"]),
+        phone: ID! @rules(apply: ["min:10","max:20"]),
         gender: String!,
     ): Patient @update
 
@@ -35,7 +35,7 @@ extend type Mutation {
         email: String! @rules(apply: ["email", "unique:patients"]),
         password: String! @rules(apply: ["min:8"]),
         age: ID! @rules(apply: ["min:2"]),
-        phone: ID! @rules(apply: ["min:10","max:15"]),
+        phone: ID! @rules(apply: ["min:10","max:20"]),
         gender: String!,
     ): Patient @upsert
 

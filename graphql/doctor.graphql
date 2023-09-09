@@ -33,7 +33,7 @@ extend type Mutation {
         email: String! @rules(apply: ["email", "unique:doctors"])
         password: String! @rules(apply: ["min:8"])
         specialization_id: ID!
-        phone: ID! @rules(apply: ["min:10","max:15"])
+        phone: ID! @rules(apply: ["min:10","max:20"])
         gender: String!
         city_id: ID!
         district_id: ID!
@@ -50,7 +50,7 @@ extend type Mutation {
         email: String @rules(apply: ["email", "unique:doctors"])
         password: String @rules(apply: ["min:8"])
         specialization_id: ID
-        phone: ID @rules(apply: ["min:10","max:15"])
+        phone: ID @rules(apply: ["min:10","max:20"])
         gender: String
         city_id: ID
         district_id: ID
@@ -68,7 +68,7 @@ extend type Mutation {
         email: String! @rules(apply: ["email", "unique:doctors"])
         password: String! @rules(apply: ["min:8"])
         specialization_id: ID!
-        phone: ID @rules(apply: ["min:10","max:15"])
+        phone: ID @rules(apply: ["min:10","max:20"])
         gender: String
         city_id: ID
         district_id: ID
