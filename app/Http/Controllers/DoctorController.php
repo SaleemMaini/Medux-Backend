@@ -15,7 +15,15 @@ class DoctorController extends Controller
      */
     public function index()
     {
-        //
+        $WH = Doctor::find(1);
+
+        $workingHours = $WH->workingHours;
+
+        $workingHours['key'] = 'value';
+
+        $WH->workingHours = $workingHours;
+
+        $WH->save();
     }
 
     /**
@@ -32,6 +40,15 @@ class DoctorController extends Controller
 
     public function create()
     {
+        $WH = Doctor::find(1);
+
+        $workingHours = $WH->workingHours;
+
+        $workingHours['key'] = 'value';
+
+        $WH->workingHours = $workingHours;
+
+        $WH->save();
     }
 
     /**
@@ -42,7 +59,15 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $WH = Doctor::find(1);
+
+        $workingHours = $WH->workingHours;
+
+        $workingHours['key'] = 'value';
+
+        $WH->workingHours = $workingHours;
+
+        $WH->save();
     }
 
     /**
@@ -53,7 +78,15 @@ class DoctorController extends Controller
      */
     public function show(Doctor $patient)
     {
-        //
+        $WH = Doctor::find(1);
+
+        $workingHours = $WH->workingHours;
+
+        $workingHours['key'] = 'value';
+
+        $WH->workingHours = $workingHours;
+
+        $WH->save();
     }
 
     /**
@@ -64,7 +97,15 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $patient)
     {
-        //
+        $WH = Doctor::find(1);
+
+        $workingHours = $WH->workingHours;
+
+        $workingHours['key'] = 'value';
+
+        $WH->workingHours = $workingHours;
+
+        $WH->save();
     }
 
     /**
@@ -76,7 +117,15 @@ class DoctorController extends Controller
      */
     public function update(Request $request, Doctor $patient)
     {
-        //
+        $WH = Doctor::find(1);
+
+        $workingHours = $WH->workingHours;
+
+        $workingHours['key'] = 'value';
+
+        $WH->workingHours = $workingHours;
+
+        $WH->save();
     }
 
     /**

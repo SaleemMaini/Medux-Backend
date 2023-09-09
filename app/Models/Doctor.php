@@ -26,8 +26,13 @@ class Doctor extends Authenticatable
         'specialization_id',
         'phone',
         'city_id',
-        'working_Hours_id'
+        'district_id',
+        'working_Hours_id',
+        'workingHours',
+        'averageVisitTime',
     ];
+
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -45,6 +50,7 @@ class Doctor extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
+        'workingHours' => 'array',
         'email_verified_at' => 'datetime',
     ];
 
@@ -70,11 +76,15 @@ class Doctor extends Authenticatable
     {
         return $this->belongsTo(City::class, 'city_id');
     }
-
-    public function workinghours(): BelongsTo
+    public function district(): BelongsTo
     {
-        return $this->belongsTo(WorkingHour::class, 'working_Hours_id');
+        return $this->belongsTo(District::class, 'district_id');
     }
+
+    // public function workinghours(): BelongsTo
+    // {
+    //     return $this->belongsTo(WorkingHour::class, 'working_Hours_id');
+    // }
     // public function doctoravts(): HasMany
     // {
     //     return $this->hasMany(DoctorAvT::class);

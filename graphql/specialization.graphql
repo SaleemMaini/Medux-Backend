@@ -8,6 +8,8 @@ extend type Mutation {
 
     createSpecialization(
         name: String!
+        summary: String!
+        image: String!
     ): Specialization! @create
 
     deleteSpecialization(id: ID! @whereKey): Specialization @delete
@@ -19,4 +21,6 @@ extend type Mutation {
 type Specialization {
     id: ID!
     name: String!
+    summary: String!
+    image: String!
 }

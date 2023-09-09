@@ -43,7 +43,6 @@ scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date
 
 #import district.graphql
 
-#import working_hour.graphql
 
 
 

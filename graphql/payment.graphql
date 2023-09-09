@@ -7,7 +7,10 @@ extend type Query {
 extend type Mutation {
 
     createPayment(
-        name: String!
+        amount: ID!
+        status: String!
+        notes: String!
+        visit_id: ID!
     ): Payment! @create
 
     deletePayment(id: ID! @whereKey): Payment @delete
@@ -18,7 +21,7 @@ extend type Mutation {
 
 type Payment {
     id: ID!
-    type: String!
+    amount: ID!
     status: String!
     notes : String!
     visit: Visit! @belongsTo

@@ -1,54 +1,82 @@
+input  WH{
+    day: String!
+    active: String!
+    from: String!
+    to: String!
+}
+input WSI{
+    day1: WH!
+    day2: WH!
+    day3: WH!
+    day4: WH!
+    day5: WH!
+    day6: WH!
+    day7: WH!
+}
+type JSON{
+    day: String!
+    active: String!
+    from: String!
+    to: String!
+}
+
 extend type Query {
-
     doctor(id: ID @eq): Doctor @find
-
     doctors: [Doctor!]! @all
-
 }
 
 
 extend type Mutation {
 
     createDoctor(
-        name: String!,
-        email: String! @rules(apply: ["email", "unique:doctors"]),
-        password: String! @rules(apply: ["min:8"]),
-        specialization_id: ID!,
-        phone: ID! @rules(apply: ["min:10","max:15"]),
+        name: String!
+        email: String! @rules(apply: ["email", "unique:doctors"])
+        password: String! @rules(apply: ["min:8"])
+        specialization_id: ID!
+        phone: ID! @rules(apply: ["min:10","max:15"])
         gender: String!
-        city_id: ID!,
-        avatar: String!,
-        summary: String!,
-        fees: Float!,
+        city_id: ID!
+        district_id: ID!
+        avatar: String!
+        summary: String!
+        fees: Float!
+        # workingHours: WSI!
+        averageVisitTime: ID!
     ): Doctor! @create
 
     updateDoctor(
         id: ID!,
-        name: String,
-        email: String @rules(apply: ["email", "unique:doctors"]),
-        password: String @rules(apply: ["min:8"]),
-        specialization_id: ID!,
-        phone: ID @rules(apply: ["min:10","max:15"]),
+        name: String
+        email: String @rules(apply: ["email", "unique:doctors"])
+        password: String @rules(apply: ["min:8"])
+        specialization_id: ID
+        phone: ID @rules(apply: ["min:10","max:15"])
         gender: String
-        city_id: ID,
-        avatar: String,
-        summary: String,
-        fees: Float,
+        city_id: ID
+        district_id: ID
+        avatar: String
+        summary: String
+        fees: Float
+        workingHours: WSI
+        averageVisitTime: ID
     ): Doctor @update
 
     deleteDoctor(id: ID! @whereKey): Doctor @delete
 
-    upsertDoctor(id: ID!,
-        name: String!,
-        email: String! @rules(apply: ["email", "unique:doctors"]),
-        password: String! @rules(apply: ["min:8"]),
-        specialization_id: ID!,
-        phone: ID @rules(apply: ["min:10","max:15"]),
+    upsertDoctor(id: ID!
+        name: String!
+        email: String! @rules(apply: ["email", "unique:doctors"])
+        password: String! @rules(apply: ["min:8"])
+        specialization_id: ID!
+        phone: ID @rules(apply: ["min:10","max:15"])
         gender: String
-        city_id: ID,
-        avatar: String,
-        summary: String,
-        fees: Float,
+        city_id: ID
+        district_id: ID
+        avatar: String
+        summary: String
+        fees: Float
+        workingHours: WSI
+        averageVisitTime: ID
     ): Doctor @upsert
 
 
@@ -64,10 +92,20 @@ type Doctor {
 
     "Unique email address."
     email: String!
+    phone: ID!
+    gender: String!
+    city: City! @belongsTo
+    district: District! @belongsTo
+    avatar: String!
+    summary: String!
+    fees: Float!
+    workingHours: [JSON]!
+    averageVisitTime: ID!
 
     specialization: Specialization! @belongsTo
 
-    city: City! @belongsTo
+
+
 
 
     staffs: [Staff]! @hasMany
@@ -76,7 +114,10 @@ type Doctor {
 
     appointments: [Appointment]! @hasMany
 
-    WorkingHours: WorkingHour! @belongsTo
+    # WorkingHours: WorkingHour! @belongsTo
+
+
+    averageVisitTime: ID!
 
 
     "When the account was created."
