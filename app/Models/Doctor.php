@@ -23,9 +23,10 @@ class Doctor extends Authenticatable
         'name',
         'email',
         'password',
-        'specilazation_id',
+        'specialization_id',
         'phone',
-        'city_id'
+        'city_id',
+        'working_Hours_id'
     ];
 
     /**
@@ -70,6 +71,10 @@ class Doctor extends Authenticatable
         return $this->belongsTo(City::class, 'city_id');
     }
 
+    public function workinghours(): BelongsTo
+    {
+        return $this->belongsTo(WorkingHour::class, 'working_Hours_id');
+    }
     // public function doctoravts(): HasMany
     // {
     //     return $this->hasMany(DoctorAvT::class);

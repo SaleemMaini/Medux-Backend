@@ -1,0 +1,23 @@
+extend type Query {
+    district(id: ID @eq): District @find
+    districts: [District!]! @all
+}
+
+
+extend type Mutation {
+
+    createDistrict(
+        name: String!
+    ): District! @create
+
+    deleteDistrict(id: ID! @whereKey): District @delete
+
+
+}
+
+
+type District {
+    id: ID!
+    name: String!
+    city: City! @belongsTo
+}

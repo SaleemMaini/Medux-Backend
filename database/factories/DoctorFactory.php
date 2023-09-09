@@ -6,6 +6,7 @@ use App\Models\City;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use App\Models\Specialization;
+use App\Models\WorkingHour;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Doctor>
@@ -30,6 +31,9 @@ class DoctorFactory extends Factory
             },
             'city_id' => function(){
                 return City::factory()->create()->id;
+            },
+            'working_Hours_id' => function(){
+                return WorkingHour::factory()->create()->id;
             },
         ];
     }

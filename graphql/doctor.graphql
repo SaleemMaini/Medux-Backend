@@ -4,7 +4,6 @@ extend type Query {
 
     doctors: [Doctor!]! @all
 
-    doctorWH:
 }
 
 
@@ -21,10 +20,6 @@ extend type Mutation {
         avatar: String!,
         summary: String!,
         fees: Float!,
-        workingHours: String!,
-        averageVisitTime: ID!,
-        pointStartWorkTime: DateTime,
-        pointEndWorkTime: DateTime
     ): Doctor! @create
 
     updateDoctor(
@@ -39,10 +34,6 @@ extend type Mutation {
         avatar: String,
         summary: String,
         fees: Float,
-        workingHours: String,
-        averageVisitTime: ID,
-        pointStartWorkTime: DateTime,
-        pointEndWorkTime: DateTime
     ): Doctor @update
 
     deleteDoctor(id: ID! @whereKey): Doctor @delete
@@ -58,10 +49,6 @@ extend type Mutation {
         avatar: String,
         summary: String,
         fees: Float,
-        workingHours: String,
-        averageVisitTime: ID,
-        pointStartWorkTime: DateTime,
-        pointEndWorkTime: DateTime
     ): Doctor @upsert
 
 
@@ -89,7 +76,8 @@ type Doctor {
 
     appointments: [Appointment]! @hasMany
 
-    workingHours: String!
+    WorkingHours: WorkingHour! @belongsTo
+
 
     "When the account was created."
     created_at: DateTime!
